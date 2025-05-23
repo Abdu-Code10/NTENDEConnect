@@ -1,0 +1,154 @@
+<!-- NtendeConnect App: HTML + CSS + JS + PHP + Node.js Skeleton -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NtendeConnect</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 2em;
+    }
+
+    section {
+      margin-bottom: 2em;
+      padding: 1em;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NtendeConnect</h1>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#produce">Produce</a></li>
+        <li><a href="#market">Market</a></li>
+        <li><a href="#hotel">Hotel</a></li>
+        <li><a href="#announcements">Announcements</a></li>
+        <li><a href="#login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="app">
+    <section id="home">
+      <h2>Welcome to NtendeConnect</h2>
+      <p>Empowering farmers and the community in Gatsibo District.</p>
+    </section>
+
+    <section id="produce">
+      <h2>Produce Status</h2>
+      <div id="produce-status"></div>
+    </section>
+
+    <section id="market">
+      <h2>Digital Market</h2>
+      <div id="market-items"></div>
+    </section>
+
+    <section id="hotel">
+      <h2>Hotel Services</h2>
+      <div id="hotel-booking"></div>
+    </section>
+
+    <section id="announcements">
+      <h2>Announcements</h2>
+      <div id="news-board"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NtendeConnect. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Fetch and display produce
+    fetch('backend/get_produce.php')
+      .then(res => res.json())
+      .then(data => {
+        const produceStatus = document.getElementById('produce-status');
+        data.forEach(item => {
+          const div = document.createElement('div');
+          div.innerText = `${item.name}: ${item.status}`;
+          produceStatus.appendChild(div);
+        });
+      });
+
+    // Fetch and display market items
+    fetch('backend/get_market.php')
+      .then(res => res.json())
+      .then(data => {
+        const marketList = document.getElementById('market-items');
+        data.forEach(item => {
+          const div = document.createElement('div');
+          div.innerText = `${item.name} - ${item.price}`;
+          marketList.appendChild(div);
+        });
+      });
+
+    // Fetch and display announcements
+    fetch('backend/get_announcements.php')
+      .then(res => res.json())
+      .then(data => {
+        const newsBoard = document.getElementById('news-board');
+        data.forEach(message => {
+          const p = document.createElement('p');
+          p.innerText = message;
+          newsBoard.appendChild(p);
+        });
+      });
+  </script>
+</body>
+</html>
