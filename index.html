@@ -78,6 +78,7 @@
         <li><a href="#hotel">Hotel</a></li>
         <li><a href="#announcements">Announcements</a></li>
         <li><a href="#login">Login</a></li>
+        <li><a href="#register">Register</a></li>
       </ul>
     </nav>
   </header>
@@ -107,6 +108,24 @@
       <h2>Announcements</h2>
       <div id="news-board"></div>
     </section>
+
+    <section id="login">
+      <h2>Login</h2>
+      <form action="backend/login.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </section>
+
+    <section id="register">
+      <h2>Register</h2>
+      <form action="backend/register.php" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+      </form>
+    </section>
   </main>
 
   <footer>
@@ -114,7 +133,7 @@
   </footer>
 
   <script>
-    // Fetch and display produce
+    // Produce
     fetch('backend/get_produce.php')
       .then(res => res.json())
       .then(data => {
@@ -126,7 +145,7 @@
         });
       });
 
-    // Fetch and display market items
+    // Market
     fetch('backend/get_market.php')
       .then(res => res.json())
       .then(data => {
@@ -138,7 +157,7 @@
         });
       });
 
-    // Fetch and display announcements
+    // Announcements
     fetch('backend/get_announcements.php')
       .then(res => res.json())
       .then(data => {
