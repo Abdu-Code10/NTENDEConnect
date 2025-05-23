@@ -1,0 +1,20 @@
+CREATE DATABASE ntendeconnect;
+USE ntendeconnect;
+
+CREATE TABLE produce (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    status VARCHAR(255)
+);
+
+CREATE TABLE market (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    price VARCHAR(100)
+);
+
+CREATE TABLE announcements (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    message TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
